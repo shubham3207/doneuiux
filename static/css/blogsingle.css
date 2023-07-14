@@ -1,0 +1,24 @@
+.new{
+    font-size: 20px;
+}
+
+.comment{
+    border: 2px solid black;
+    border-radius: 7px;
+    background-color: white;
+    height: 50px;
+}
+.blog-text {
+    font-size: 16px;
+    line-height: 2;
+    color: #333;
+}
+.blog-image {
+    max-width: 100%;
+    height: auto;
+}
+.blog-details {
+    font-size: small;
+    margin-bottom: 10px; /* Adjust the desired amount of space */
+}
+

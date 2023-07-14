@@ -1,0 +1,5 @@
+.prof-box{
+    box-shadow: 4px 5px 13px 0px rgba(0,0,0,0.58);
+-webkit-box-shadow: 4px 5px 13px 0px rgba(0,0,0,0.58);
+-moz-box-shadow: 4px 5px 13px 0px rgba(0,0,0,0.58);
+}

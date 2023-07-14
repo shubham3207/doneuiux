@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+ 
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Home</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Add Font Awesome for search icon -->
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blogsingle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  
+    <style>
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0%;
+        }
+    
+        .container {
+        display: flex;
+        flex-direction: column;
+        /* min-height: 90vh; */
+        }
+    
+        /* .footer-bs {
+        background-color: #000000;
+        padding: 80px 60px;
+        color: rgba(255, 255, 255, 1.00);
+        margin-top: auto;
+        border-bottom-right-radius: 6px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 6px;
+        
+        } */
+    </style>
+</head>
+<body>
+  
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black px-0 py-3">
+    <div class="container-xl">
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="{% static '/img/logo1.png' %}" class="h-8" alt="...">
+      </a>
+      <!-- Navbar toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <!-- Nav -->
+        <ul class="navbar-nav mx-lg-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'home' %}" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'category_view' category_name='Football' %}">Football</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'category_view' category_name='Cricket' %}">Cricket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'category_view' category_name='Basketball' %}">Basketball</a>
+          </li>
+        </ul>
+  
+        <!-- Search Box -->
+        <div class="srch_wrpr">
+          <input type="checkbox" name="" class="checkbox">
+          <div class="srch_sb_cnt">
+            <form action="{% url 'search' %}" method="GET">
+              <input type="text" name="search_query" class="sech_txt_inpt" placeholder="Type to search..." value="{{ search_query }}">
+              <button type="submit" class="srch_btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+  
+        <!-- Right navigation -->
+        <ul class="navbar-nav ms-lg-4">
+          {% if user.is_authenticated %}
+          
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{customer.profilepicture.url}}" alt="Profile Picture" class="rounded-circle me-1" style="width: 32px; height: 32px;">
+              {{ user.username }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/profile/">My Profile</a></li>
+              <li><a class="dropdown-item" href="">Change Password</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </li>
+          
+          {% else %}
+          <li class="nav-item">
+            <a href="/login" class="nav-link">Sign in</a>
+          </li>
+          <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
+            <a href="/register" class="btn btn-sm btn-primary w-full w-lg-auto">Register</a>
+          </div>
+        </div>
+      </div>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+
+
+
+
+
+
+<div class="container"> 
+    <!-- <section style="height:10px;"> -->
+
+    {% block content %}
+
+
+
+    {% endblock %}
+    
+    <!----------- Footer ------------>
+    <!-- <footer class="footer-bs" style="height: 270px;">
+        <div class="row" style="padding-bottom: 30px;">
+            <div class="col-md-3 footer-brand animated fadeInLeft " >
+                <img src="{% static 'img/logo1.png' %}" class="h-8" alt="..." style=" margin-left: 80px;">
+            </div>
+            <div class="col-md-4 footer-nav animated fadeInUp" style="margin-left:80px ; padding-left: 200px; ">
+                <h4 class="text-white">Menu —</h4>
+                
+                <div class="">
+                    <ul class="list">
+                        <li><a href='/about'>About Us</a></li>
+                        <li><a href='/contact'>Contacts</a></li>
+                        <li><a href="#">Terms & Condition</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 footer-social animated fadeInDown" style="margin-left:80px ;padding-left: 200px;">
+                <h4 class="text-white">Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">RSS</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </footer> -->
+    
+      <!-- Site footer -->
+      <footer class="site-footer mt-2" style="background-color: black;">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6 mt-5">
+              <img src="{% static 'img/logo1.png' %}" class="h-8" alt="..." style=" margin-left: 80px; margin-top: 40px;">
+            </div>
+  
+            <div class="col-xs-6 col-md-3">
+              <h6 class="text-white">Categories</h6>
+              <ul class="footer-links">
+                <li><a href="{% url 'category_view' category_name='Football' %}">Football</a></li>
+                <li><a href="{% url 'category_view' category_name='Basketball' %}">Basketball</a></li>
+                <li><a href="{% url 'category_view' category_name='Cricket' %}">Cricket</a></li>
+                <!-- <li><a href="http://scanfcode.com/category/java-programming-language/">Baseball</a></li>
+                <li><a href="http://scanfcode.com/category/android/">Hockey</a></li> -->
+              </ul>
+            </div>
+  
+            <div class="col-xs-6 col-md-3">
+              <h6 class="text-white">Quick Links</h6>
+              <ul class="footer-links">
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+              <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
+                <a href="#">SportsScribe</a>.
+              </p>
+            </div>
+  
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <ul class="social-icons row d-flex">
+                <li><a class="facebook col" href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a class="twitter col" href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="dribbble col" href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a class="linkedin col" href="#"><i class="fa fa-linkedin"></i></a></li>   
+              </ul>
+            </div>
+          </div>
+        </div>
+  </footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- Add jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script> <!-- Add Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/js/bootstrap.min.js"></script> <!-- Add Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
